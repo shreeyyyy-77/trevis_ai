@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FactCheck AI - Fake News Detector</title>
+    <!-- Use Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <!-- Simple SVG Logo icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <path d="m9 12 2 2 4-4"></path>
+            </svg>
+            FactCheck AI
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Verify the truth</h1>
+            <p class="subtitle">Enter a news headline to check its accuracy</p>
+        </section>
+
+        <section class="input-section">
+            <textarea id="headline-input" placeholder="Paste a headline here..." rows="3"></textarea>
+            <button id="analyse-btn">Analyse</button>
+            <p id="error-msg" class="error hidden"></p>
+        </section>
+
+        <div id="loader" class="hidden">
+            <div class="spinner"></div>
+            <p>Searching the web...</p>
+        </div>
+
+        <section id="result-card" class="hidden">
+            <div class="result-header">
+                <!-- SVG Score Ring -->
+                <div class="score-ring-container">
+                    <svg class="score-ring" width="100" height="100">
+                        <!-- Background track -->
+                        <circle class="track" cx="50" cy="50" r="45"></circle>
+                        <!-- Foreground fill -->
+                        <circle class="fill" cx="50" cy="50" r="45"></circle>
+                    </svg>
+                    <div class="score-text">
+                        <span id="score-value">0</span>
+                    </div>
+                </div>
+                
+                <div class="verdict-container">
+                    <span class="verdict-badge" id="verdict-badge">Verdict</span>
+                </div>
+            </div>
+
+            <p class="summary-text" id="summary-text">Summary goes here.</p>
+
+            <details class="reasoning-block">
+                <summary>Read detailed reasoning</summary>
+                <p id="reasoning-text">Detailed reasoning goes here.</p>
+            </details>
+
+            <div class="sources-container">
+                <h3>Sources Checked</h3>
+                <ul class="sources-list" id="sources-list">
+                    <!-- Dynamic source links will be injected here -->
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Powered by Claude + Web Search</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
