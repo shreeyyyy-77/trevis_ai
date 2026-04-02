@@ -8,7 +8,7 @@ load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 
 from analyser import analyse
 
-app = FastAPI(title="Fake News Detector API")
+app = FastAPI(title="Trevis AI - Fake News Detector")
 
 # Allow all origins in development — restrict in production
 app.add_middleware(

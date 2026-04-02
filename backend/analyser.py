@@ -35,7 +35,7 @@ Scoring guide:
 
 async def analyse(req: AnalyseRequest) -> AnalyseResponse:
     # Use gemini-2.5-flash for better quota limits
-    response = client.models.generate_content(
+    response = await client.aio.models.generate_content(
         model="gemini-2.5-flash",
         contents=f'Fact-check this headline: "{req.headline}"',
         config=types.GenerateContentConfig(
@@ -49,7 +49,7 @@ async def analyse(req: AnalyseRequest) -> AnalyseResponse:
         if not response.candidates:
             raise ValueError("Gemini returned an empty response. It may have been blocked by safety filters.")
             
-        match = re.search(r'\{.*\}', response.text, re.DOTALL)
+        match = re.search(r'\{.*\}', getattr(response, "text", ""), re.DOTALL)
         if not match:
             raise ValueError("Gemini did not return a valid JSON format in the text block.")
             
